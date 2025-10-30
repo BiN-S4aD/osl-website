@@ -1,308 +1,111 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Oriental Skab Logistics (OSL) — سكاب الشرق للخدمات اللوجستية</title>
-  <meta name="description" content="Oriental Skab Logistics (OSL) — Fast, reliable logistics & transportation across KSA and beyond." />
+  <title>OSL — سكاب الشرق للخدمات اللوجستية | Oriental Skab Logistics</title>
+  <meta name="description" content="OSL provides end‑to‑end logistics & transportation in KSA: road freight, customs (SABER/SFDA) support, warehousing, and tracking.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-uHg0UDw3mVj7i0v1H5a7+1m0yqkqzqXn3o8x8t8rZ6QxgK2k0mY4oX9XnZpVmrWc7rDkJrWZC9sJ3kz2P5o3uQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     :root{
-      --bg:#0b1220; /* deep navy */
-      --card:#111a2f; /* slightly lighter */
-      --muted:#1a2440; /* accents */
-      --brand:#34beaf; /* Faisal's favorite teal */
-      --brand-2:#2596be; /* secondary blue */
-      --text:#eaf2ff;
-      --text-dim:#a7b4d6;
-      --accent:#f4b400; /* subtle gold accent */
-      --radius:18px;
-      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --bg:#0e0e10; --brand:#34beaf; --brand2:#2596be; --text:#f6f8ff; --muted:#aeb6cf;
+      --card:#14161f; --line:rgba(255,255,255,.08); --radius:18px; --shadow:0 10px 30px rgba(0,0,0,.35);
     }
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:linear-gradient(180deg,#0a0f1d 0%, #0b1220 100%);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji";scroll-behavior:smooth}
-    body[dir="rtl"], body[dir="rtl"] *{font-family:Tajawal, Inter, system-ui, sans-serif}
+    html,body{margin:0;padding:0;background:linear-gradient(180deg,#0a0d15, #0e0e10);color:var(--text);font-family:Tajawal, Lato, system-ui}
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block}
+    .container{width:min(1200px,92%);margin-inline:auto}
 
-    /* Layout */
-    .container{width:min(1200px, 92%);margin-inline:auto}
-    header.navbar{position:sticky;top:0;z-index:50;background:rgba(11,18,32,.65);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.05)}
-    .nav-wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    /* NAV */
+    header{position:sticky;top:0;z-index:40;background:rgba(14,14,16,.6);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
     .brand{display:flex;gap:12px;align-items:center}
-    .logo{width:42px;height:42px;display:grid;place-items:center;background:linear-gradient(135deg,var(--brand),var(--brand-2));border-radius:14px;box-shadow:var(--shadow)}
-    .brand h1{font-size:18px;line-height:1.1;margin:0}
-    .brand span{display:block;color:var(--text-dim);font-weight:400;font-size:12px}
+    .logo{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,var(--brand),var(--brand2));display:grid;place-items:center;box-shadow:var(--shadow)}
+    .brand h1{margin:0;font-size:18px}
+    .brand small{display:block;color:var(--muted);font-size:12px}
     nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0}
     nav a{opacity:.9}
     nav a:hover{opacity:1;color:var(--brand)}
-    .lang-toggle{display:flex;gap:8px;align-items:center}
-    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:999px;background:var(--brand);color:#07141a;font-weight:700;border:1px solid rgba(255,255,255,.08);box-shadow:var(--shadow)}
-    .btn.ghost{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,.18)}
+    .lang{display:flex;gap:8px}
+    .btn{padding:10px 16px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--text);font-weight:700}
+    .btn.primary{background:var(--brand);color:#012f2b;border-color:rgba(255,255,255,.1)}
 
-    /* Hero */
-    .hero{position:relative;padding:92px 0 40px}
-    .hero .grid{display:grid;grid-template-columns:1.2fr .8fr;gap:36px}
-    .badge{display:inline-flex;gap:10px;align-items:center;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:8px 12px;border-radius:999px;color:var(--text-dim)}
-    .title{font-size:48px;line-height:1.05;margin:16px 0 10px}
-    .subtitle{font-size:18px;color:var(--text-dim);max-width:60ch}
-    .hero-card{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:18px}
-    .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
-    .stat{background:var(--muted);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:16px;text-align:center}
-    .stat h3{margin:0;font-size:22px}
-    .stat p{margin:4px 0 0;color:var(--text-dim);font-size:12px}
+    /* HERO full height */
+    .hero{position:relative;min-height:92vh;display:grid;place-items:center;overflow:hidden;border-bottom:1px solid var(--line)}
+    .hero::before{content:"";position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1586521995568-39f4f2c9f859?q=80&w=2400&auto=format&fit=crop') center/cover no-repeat;filter:brightness(.45)}
+    .hero .wrap{position:relative;z-index:1}
+    .banner-lines{position:absolute;inset:auto 0 20px 0;height:2px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent)}
+    .title{font-size:46px;line-height:1.05;margin:10px 0}
+    .subtitle{color:var(--muted);max-width:70ch}
+    .cta{display:flex;gap:10px;margin-top:18px}
 
-    /* Sections */
-    section{padding:72px 0;border-top:1px solid rgba(255,255,255,.06)}
-    .section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:24px}
-    .section-head h2{margin:0;font-size:28px}
-    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .card{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
-    .card h3{margin:0 0 6px;font-size:18px}
-    .card p{margin:0;color:var(--text-dim)}
-    .chip{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border:1px solid rgba(255,255,255,.12);border-radius:999px;background:rgba(255,255,255,.04);font-size:12px;color:var(--text-dim)}
-    .list{display:grid;gap:10px;margin:14px 0 0;padding:0}
-    .list li{list-style:none;display:flex;gap:10px}
-    .list i{margin-top:3px;color:var(--brand)}
+    /* WHY CHOOSE (with video style image) */
+    section{padding:76px 0}
+    .sect-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:18px}
+    .sect-head h2{margin:0}
+    .why{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center}
+    .why .video{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+    .why .video img{width:100%;height:100%;object-fit:cover;filter:brightness(.85)}
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}
+    .step .h5{font-weight:800;margin:4px 0 6px}
+    .numbers{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:24px}
+    .num{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;text-align:center}
+    .num h3{margin:0;font-size:24px}
+    .num p{margin:6px 0 0;color:var(--muted);font-size:12px}
 
-    /* News */
-    .news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .news .tag{font-size:12px;color:#0b1220;background:var(--accent);display:inline-block;padding:4px 10px;border-radius:999px}
-    .news time{color:var(--text-dim);font-size:12px}
+    /* DARK STRIPE */
+    .stripe{background:#0d121d;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .stripe .grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:center}
+    .dash{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}
 
-    /* Contact */
-    form{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
-    form .full{grid-column:1/-1}
+    /* ABOUT */
+    .about{display:grid;grid-template-columns:.8fr 1.2fr;gap:24px;align-items:center}
+    .about .img{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+    .about .note{position:absolute;bottom:12px;inset-inline:12px;background:rgba(0,0,0,.6);padding:10px;border-radius:12px;font-size:14px}
+
+    /* PRODUCTS & SERVICES */
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}
+    .card h3{margin:0 0 8px}
+
+    /* CONTACT */
+    form{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+    form .full{grid-column:1 / -1}
     .field{display:flex;flex-direction:column;gap:6px}
-    .field label{font-size:12px;color:var(--text-dim)}
-    .field input,.field textarea{background:var(--muted);border:1px solid rgba(255,255,255,.1);color:var(--text);padding:12px;border-radius:12px;outline:none}
+    .field input,.field textarea{background:#0f1522;border:1px solid var(--line);border-radius:12px;color:var(--text);padding:12px;outline:none}
     .field textarea{min-height:120px;resize:vertical}
 
-    /* Footer */
-    footer{padding:30px 0;background:rgba(255,255,255,.03);border-top:1px solid rgba(255,255,255,.08)}
-    .foot-wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:center}
-    .social{display:flex;gap:12px}
-    .social a{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:999px;border:1px solid rgba(255,255,255,.12)}
+    /* FOOTER */
+    footer{padding:28px 0;border-top:1px solid var(--line);background:rgba(255,255,255,.03)}
+    .foot{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:center}
+    .social{display:flex;gap:10px}
+    .social a{width:38px;height:38px;border-radius:999px;border:1px solid var(--line);display:grid;place-items:center}
+
+    /* Reveal Animations */
+    .reveal{opacity:0;transform:translateY(16px);transition:.6s ease}
+    .reveal.show{opacity:1;transform:none}
 
     /* Responsive */
     @media (max-width: 980px){
-      .hero .grid{grid-template-columns:1fr}
-      .cards, .news-grid{grid-template-columns:1fr}
+      .title{font-size:34px}
+      .why{grid-template-columns:1fr}
+      .steps,.numbers,.cards{grid-template-columns:1fr}
+      .about{grid-template-columns:1fr}
       form{grid-template-columns:1fr}
-      .foot-wrap{grid-template-columns:1fr}
-      .title{font-size:36px}
+      .foot{grid-template-columns:1fr}
     }
   </style>
 </head>
 <body>
-
-  <!-- Nav -->
-  <header class="navbar">
-    <div class="container nav-wrap">
-      <a href="#" class="brand" aria-label="OSL Home">
-        <div class="logo" title="OSL Logo">
-          <!-- Simple geometric OSL mark -->
-          <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
-            <!-- O -->
-            <circle cx="8" cy="8" r="6.5" stroke="white" stroke-width="3" opacity=".95"/>
-            <!-- S -->
-            <path d="M16 4c2-2 6 0 6 2s-2 3-5 4-5 2-5 4 3 4 6 2" stroke="white" stroke-width="3" stroke-linecap="round" opacity=".95"/>
-            <!-- L -->
-            <path d="M3 22h14" stroke="white" stroke-width="3" stroke-linecap="round" opacity=".95"/>
-          </svg>
-        </div>
-        <div>
-          <h1>Oriental Skab Logistics <span>OSL — سكاب الشرق للخدمات اللوجستية</span></h1>
-        </div>
-      </a>
-      <nav aria-label="Primary">
-        <ul>
-          <li><a href="#home" data-i18n="nav.home">Home</a></li>
-          <li><a href="#about" data-i18n="nav.about">About</a></li>
-          <li><a href="#products" data-i18n="nav.products">Products</a></li>
-          <li><a href="#services" data-i18n="nav.services">Services</a></li>
-          <li><a href="#news" data-i18n="nav.news">News</a></li>
-          <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
-        </ul>
-      </nav>
-      <div class="lang-toggle">
-        <button id="btnEN" class="btn ghost" aria-label="Switch to English">EN</button>
-        <button id="btnAR" class="btn" aria-label="التبديل إلى العربية">AR</button>
-      </div>
-    </div>
-  </header>
-
-  <!-- Hero -->
-  <section id="home" class="hero container">
-    <div class="grid">
-      <div>
-        <span class="badge"><i class="fa-solid fa-truck-fast"></i> <span data-i18n="hero.badge">Trusted logistics partner</span></span>
-        <h2 class="title" data-i18n="hero.title">Moving goods. Powering growth.</h2>
-        <p class="subtitle" data-i18n="hero.subtitle">From first mile to last mile, OSL delivers end‑to‑end logistics across KSA and the region with reliability, visibility, and care.</p>
-        <div style="display:flex;gap:10px;margin-top:18px">
-          <a href="#contact" class="btn"><i class="fa-regular fa-paper-plane"></i> <span data-i18n="cta.quote">Request a Quote</span></a>
-          <a href="#services" class="btn ghost"><i class="fa-solid fa-diagram-project"></i> <span data-i18n="cta.explore">Explore Services</span></a>
-        </div>
-        <div class="hero-stats">
-          <div class="stat"><h3>24/7</h3><p data-i18n="hero.s1">Operations</p></div>
-          <div class="stat"><h3>+120</h3><p data-i18n="hero.s2">Clients Served</p></div>
-          <div class="stat"><h3>98%</h3><p data-i18n="hero.s3">On‑time Rate</p></div>
-        </div>
-      </div>
-      <div class="hero-card">
-        <div class="chip"><i class="fa-solid fa-shield-check"></i> <span data-i18n="hero.assurance">Insured & compliant</span></div>
-        <img src="https://images.unsplash.com/photo-1547347298-4074fc08cd0f?q=80&w=1600&auto=format&fit=crop" alt="Logistics containers and cranes" style="border-radius:12px;margin-top:12px;border:1px solid rgba(255,255,255,.1)">
-        <ul class="list">
-          <li><i class="fa-solid fa-check"></i><span data-i18n="hero.li1">Domestic & cross‑border freight</span></li>
-          <li><i class="fa-solid fa-check"></i><span data-i18n="hero.li2">Customs clearance support</span></li>
-          <li><i class="fa-solid fa-check"></i><span data-i18n="hero.li3">Real‑time shipment tracking</span></li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- About -->
-  <section id="about">
-    <div class="container">
-      <div class="section-head">
-        <h2 data-i18n="about.h">About Us</h2>
-        <span class="chip">OSL • <span data-i18n="about.tag">Riyadh • KSA</span></span>
-      </div>
-      <div class="cards">
-        <article class="card">
-          <h3 data-i18n="about.mission.h">Our Mission</h3>
-          <p data-i18n="about.mission.p">Enable Saudi businesses to move faster with dependable logistics, transparent pricing, and proactive service.</p>
-        </article>
-        <article class="card">
-          <h3 data-i18n="about.vision.h">Our Vision</h3>
-          <p data-i18n="about.vision.p">Become a leading KSA logistics partner known for innovation, integrity, and customer obsession.</p>
-        </article>
-        <article class="card">
-          <h3 data-i18n="about.values.h">Values</h3>
-          <p data-i18n="about.values.p">Safety, reliability, accountability, and long‑term partnerships.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Products -->
-  <section id="products">
-    <div class="container">
-      <div class="section-head">
-        <h2 data-i18n="products.h">Products</h2>
-        <span class="chip"><i class="fa-solid fa-box-open"></i> <span data-i18n="products.tag">For carriers & shippers</span></span>
-      </div>
-      <div class="cards">
-        <article class="card">
-          <h3 data-i18n="products.p1.h">Trailer Axles & Parts</h3>
-          <p data-i18n="products.p1.p">14T axles, air‑suspension kits, brake valves, leaf springs, and OEM spares.</p>
-        </article>
-        <article class="card">
-          <h3 data-i18n="products.p2.h">Cargo Handling</h3>
-          <p data-i18n="products.p2.p">Ratcheting straps, corner protectors, pallets, and safety gear.</p>
-        </article>
-        <article class="card">
-          <h3 data-i18n="products.p3.h">Telematics</h3>
-          <p data-i18n="products.p3.p">Trackers, temperature sensors, and fleet dashboards for visibility.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services -->
-  <section id="services">
-    <div class="container">
-      <div class="section-head">
-        <h2 data-i18n="services.h">Services</h2>
-        <span class="chip"><i class="fa-solid fa-diagram-project"></i> <span data-i18n="services.tag">End‑to‑end solutions</span></span>
-      </div>
-      <div class="cards">
-        <article class="card">
-          <h3 data-i18n="services.s1.h">Road Freight (FTL/LTL)</h3>
-          <p data-i18n="services.s1.p">Nationwide coverage with dependable delivery windows and live updates.</p>
-        </article>
-        <article class="card">
-          <h3 data-i18n="services.s2.h">Customs & Compliance</h3>
-          <p data-i18n="services.s2.p">HS codes, SABER/SFDA guidance, and port handling across KSA.</p>
-        </article>
-        <article class="card">
-          <h3 data-i18n="services.s3.h">Warehousing</h3>
-          <p data-i18n="services.s3.p">Short‑ and long‑term storage, cross‑docking, and inventory control.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- News -->
-  <section id="news" class="news">
-    <div class="container">
-      <div class="section-head">
-        <h2 data-i18n="news.h">News</h2>
-        <a class="chip" href="#" aria-label="All news"><i class="fa-regular fa-newspaper"></i> <span data-i18n="news.tag">Updates & announcements</span></a>
-      </div>
-      <div class="news-grid">
-        <article class="card">
-          <span class="tag" data-i18n="news.n1.tag">Announcement</span>
-          <h3 style="margin:8px 0">OSL opens Riyadh branch</h3>
-          <time datetime="2025-10-01">Oct 1, 2025</time>
-          <p style="margin-top:8px;color:var(--text-dim)" data-i18n="news.n1.p">We expanded capacity to serve central region clients faster.</p>
-        </article>
-        <article class="card">
-          <span class="tag" data-i18n="news.n2.tag">Partnership</span>
-          <h3 style="margin:8px 0">New carrier alliances</h3>
-          <time datetime="2025-09-10">Sep 10, 2025</time>
-          <p style="margin-top:8px;color:var(--text-dim)" data-i18n="news.n2.p">Broader lane coverage and improved transit times.</p>
-        </article>
-        <article class="card">
-          <span class="tag" data-i18n="news.n3.tag">Update</span>
-          <h3 style="margin:8px 0">SABER/SFDA support</h3>
-          <time datetime="2025-08-20">Aug 20, 2025</time>
-          <p style="margin-top:8px;color:var(--text-dim)" data-i18n="news.n3.p">We now offer advisory for regulated imports and certificates.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact">
-    <div class="container">
-      <div class="section-head">
-        <h2 data-i18n="contact.h">Contact Us</h2>
-        <span class="chip"><i class="fa-regular fa-envelope"></i> <span>@OrientalSkab</span></span>
-      </div>
-      <div class="cards" style="grid-template-columns:1fr .9fr;align-items:start">
-        <div class="card">
-          <h3 style="margin-top:0" data-i18n="contact.form.h">Send a message</h3>
-          <form onsubmit="event.preventDefault(); alert(currentLang==='ar' ? 'تم الإرسال (نموذج تجريبي).' : 'Submitted (demo form).');">
-            <div class="field"><label data-i18n="contact.form.name">Full name</label><input required placeholder="John Doe"/></div>
-            <div class="field"><label data-i18n="contact.form.phone">Phone</label><input placeholder="+966"/></div>
-            <div class="field full"><label data-i18n="contact.form.email">Email</label><input type="email" placeholder="name@example.com" required/></div>
-            <div class="field full"><label data-i18n="contact.form.msg">Message</label><textarea placeholder="How can we help?" required></textarea></div>
-            <div class="full" style="display:flex;gap:10px;justify-content:flex-end"><button class="btn" type="submit" data-i18n="contact.form.send">Send</button></div>
-          </form>
-        </div>
-        <div class="card">
-          <h3 style="margin-top:0">OSL</h3>
-          <p><strong data-i18n="contact.addr.h">Address</strong><br><span data-i18n="contact.addr">1234 Logistics Rd, Riyadh, Saudi Arabia</span></p>
-          <p><strong data-i18n="contact.phone.h">Phone</strong><br><a href="tel:+966112345678">+966 11 234 5678</a></p>
-          <p><strong data-i18n="contact.email.h">Email</strong><br><a href="mailto:info@osl.com">info@osl.com</a></p>
-          <div class="social" style="margin-top:12px">
-            <a href="https://instagram.com/OrientalSkab" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://facebook.com/OrientalSkab" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="https://x.com/OrientalSkab" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container foot-wrap">
-      <div class="brand">
+  <!-- NAV -->
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="OSL Home">
         <div class="logo" aria-hidden="true">
           <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
             <circle cx="8" cy="8" r="6.5" stroke="white" stroke-width="3" opacity=".95"/>
@@ -310,91 +113,207 @@
             <path d="M3 22h14" stroke="white" stroke-width="3" stroke-linecap="round" opacity=".95"/>
           </svg>
         </div>
+        <div><h1>سكاب الشرق للخدمات اللوجستية<small>Oriental Skab Logistics — OSL</small></h1></div>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="#home" data-i18n="nav.home">الرئيسية</a></li>
+          <li><a href="#about" data-i18n="nav.about">من نحن</a></li>
+          <li><a href="#products" data-i18n="nav.products">المنتجات</a></li>
+          <li><a href="#services" data-i18n="nav.services">الخدمات</a></li>
+          <li><a href="#news" data-i18n="nav.news">الأخبار</a></li>
+          <li><a href="#contact" data-i18n="nav.contact">تواصل</a></li>
+        </ul>
+      </nav>
+      <div class="lang">
+        <button id="toEN" class="btn">EN</button>
+        <button id="toAR" class="btn primary">AR</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="wrap container reveal">
+      <div class="badge" style="display:inline-flex;gap:10px;align-items:center;background:rgba(255,255,255,.08);border:1px solid var(--line);padding:8px 12px;border-radius:999px;color:var(--muted)"><i class="fa-solid fa-truck-fast"></i> <span data-i18n="hero.badge">شريكك اللوجستي الموثوق</span></div>
+      <h2 class="title" data-i18n="hero.title">نحرك البضائع… وننمي الأعمال</h2>
+      <p class="subtitle" data-i18n="hero.subtitle">من الميل الأول حتى الأخير، تقدّم OSL حلول لوجستية متكاملة داخل المملكة والمنطقة بثقة ووضوح وعناية.</p>
+      <div class="cta">
+        <a class="btn primary" href="#contact" data-i18n="cta.quote">اطلب عرض سعر</a>
+        <a class="btn" href="#services" data-i18n="cta.explore">استعرض الخدمات</a>
+      </div>
+    </div>
+    <div class="banner-lines"></div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section>
+    <div class="container">
+      <div class="sect-head"><h2 data-i18n="why.h">ليش تختارنا</h2><span style="color:var(--muted)">OSL • Riyadh</span></div>
+      <div class="why">
+        <div class="video reveal"><img src="https://images.unsplash.com/photo-1547347298-4074fc08cd0f?q=80&w=1600&auto=format&fit=crop" alt="containers"></div>
         <div>
-          <strong>Oriental Skab Logistics</strong>
-          <span style="display:block;color:var(--text-dim);font-size:12px">OSL — <span data-i18n="footer.ar">سكاب الشرق للخدمات اللوجستية</span></span>
+          <div class="steps">
+            <div class="step reveal"><div class="h5" data-i18n="why.s1.h">اطلب عرض</div><p data-i18n="why.s1.p">تسعير واضح حسب تفاصيل الشحن.</p></div>
+            <div class="step reveal"><div class="h5" data-i18n="why.s2.h">خطة وجدولة</div><p data-i18n="why.s2.p">نحدّد المواعيد ونتكفّل بالمستندات.</p></div>
+            <div class="step reveal"><div class="h5" data-i18n="why.s3.h">نقل وتتبّع</div><p data-i18n="why.s3.p">شحن موثوق مع تتبّع لحظي ومسارات محسّنة.</p></div>
+            <div class="step reveal"><div class="h5" data-i18n="why.s4.h">تسليم وتخزين</div><p data-i18n="why.s4.p">تسليم دقيق أو تخزين آمن قصير/طويل الأجل.</p></div>
+          </div>
+          <div class="numbers">
+            <div class="num reveal"><h3>24/7</h3><p data-i18n="stats.s1">تشغيل</p></div>
+            <div class="num reveal"><h3>+120</h3><p data-i18n="stats.s2">عميل مخدوم</p></div>
+            <div class="num reveal"><h3>98%</h3><p data-i18n="stats.s3">التزام بالمواعيد</p></div>
+            <div class="num reveal"><h3>KSA</h3><p data-i18n="stats.s4">تغطية وطنية</p></div>
+          </div>
         </div>
       </div>
-      <div style="text-align:right">
-        <div style="color:var(--text-dim);font-size:14px" data-i18n="footer.addr">1234 Logistics Rd, Riyadh, Saudi Arabia • P: +966 11 234 5678 • E: info@osl.com</div>
-        <div style="margin-top:6px;color:var(--text-dim);font-size:12px">© <span id="year"></span> OSL. <span data-i18n="footer.rights">All rights reserved.</span></div>
+    </div>
+  </section>
+
+  <!-- DARK STRIPE / SERVICES HIGHLIGHT -->
+  <section class="stripe" id="services">
+    <div class="container grid">
+      <div class="dash reveal">
+        <h2 data-i18n="services.h">الخدمات</h2>
+        <p data-i18n="services.lead">حلول شاملة من الباب للباب مع دعم الجمارك والامتثال.</p>
+        <ul style="margin:12px 0 0;padding:0;list-style:none;display:grid;gap:8px">
+          <li><i class="fa-solid fa-check" style="color:var(--brand)"></i> <span data-i18n="services.s1">نقل بري (FTL/LTL)</span></li>
+          <li><i class="fa-solid fa-check" style="color:var(--brand)"></i> <span data-i18n="services.s2">الجمارك والامتثال (HS/SABER/SFDA)</span></li>
+          <li><i class="fa-solid fa-check" style="color:var(--brand)"></i> <span data-i18n="services.s3">التخزين والعبور السريع (Cross-docking)</span></li>
+        </ul>
       </div>
+      <div class="reveal"><img src="https://images.unsplash.com/photo-1518459031867-a89b944bffe0?q=80&w=1600&auto=format&fit=crop" alt="trucks"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container about">
+      <div class="img reveal">
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop" alt="team">
+        <div class="note" data-i18n="about.note">سلامة أولاً • شفافية • التزام</div>
+      </div>
+      <div class="reveal">
+        <h2 data-i18n="about.h">من نحن</h2>
+        <p data-i18n="about.p">OSL شركة سعودية تقدّم لوجستيات متكاملة: نقل بري، تخليص جمركي، حلول تخزين، وتتبّع لحظي—بخدمة استباقية وأسعار شفافة.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section id="products">
+    <div class="container">
+      <div class="sect-head"><h2 data-i18n="products.h">المنتجات</h2><span style="color:var(--muted)">For carriers & shippers</span></div>
+      <div class="cards">
+        <div class="card reveal"><h3 data-i18n="p1.h">محاور مقطورات وقطع غيار</h3><p data-i18n="p1.p">محاور 14 طن، أطقم تعليق هوائي، صمامات فرامل، يايات، وقطع أصلية.</p></div>
+        <div class="card reveal"><h3 data-i18n="p2.h">معدات مناولة</h3><p data-i18n="p2.p">أحزمة ربط، حمايات زوايا، منصات، ومعدات سلامة.</p></div>
+        <div class="card reveal"><h3 data-i18n="p3.h">تليماتكس</h3><p data-i18n="p3.p">أجهزة تتبع وحساسات حرارة ولوحات أسطول للشفافية.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWS (static placeholders) -->
+  <section id="news" class="stripe">
+    <div class="container">
+      <div class="sect-head"><h2 data-i18n="news.h">الأخبار</h2><span style="color:var(--muted)" data-i18n="news.tag">تحديثات وإعلانات</span></div>
+      <div class="cards">
+        <article class="card reveal"><h3>افتتاح فرع الرياض</h3><p data-i18n="n1.p">وسعنا الطاقة لخدمة عملاء المنطقة الوسطى أسرع.</p></article>
+        <article class="card reveal"><h3>تحالفات ناقلين</h3><p data-i18n="n2.p">تغطية مسارات أوسع وأزمنة عبور أفضل.</p></article>
+        <article class="card reveal"><h3>خدمات SABER/SFDA</h3><p data-i18n="n3.p">نوفر إرشادًا للاستيراد المنظّم والشهادات.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="sect-head"><h2 data-i18n="contact.h">تواصل معنا</h2><span>@OrientalSkab</span></div>
+      <div class="cards" style="grid-template-columns:1fr .9fr;align-items:start">
+        <div class="card reveal">
+          <h3 style="margin-top:0" data-i18n="contact.form.h">أرسل رسالة</h3>
+          <form onsubmit="event.preventDefault(); alert(currentLang==='ar' ? 'تم الإرسال (نموذج تجريبي).' : 'Submitted (demo form).');">
+            <div class="field"><label data-i18n="form.name">الاسم الكامل</label><input required placeholder="الاسم"/></div>
+            <div class="field"><label data-i18n="form.phone">الهاتف</label><input placeholder="+966"/></div>
+            <div class="field full"><label data-i18n="form.email">البريد الإلكتروني</label><input type="email" placeholder="name@example.com" required/></div>
+            <div class="field full"><label data-i18n="form.msg">الرسالة</label><textarea placeholder="كيف نقدر نخدمك؟" required></textarea></div>
+            <div class="full" style="display:flex;gap:10px;justify-content:flex-end"><button class="btn primary" type="submit" data-i18n="form.send">إرسال</button></div>
+          </form>
+        </div>
+        <div class="card reveal">
+          <h3 style="margin-top:0">OSL</h3>
+          <p><strong data-i18n="addr.h">العنوان</strong><br><span data-i18n="addr">1234 طريق اللوجستيات، الرياض، السعودية</span></p>
+          <p><strong data-i18n="phone.h">الهاتف</strong><br><a href="tel:+966112345678">+966 11 234 5678</a></p>
+          <p><strong data-i18n="email.h">البريد</strong><br><a href="mailto:info@osl.com">info@osl.com</a></p>
+          <div class="social" style="margin-top:12px">
+            <a href="https://instagram.com/OrientalSkab" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://facebook.com/OrientalSkab" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://x.com/OrientalSkab" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container foot">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><circle cx="8" cy="8" r="6.5" stroke="white" stroke-width="3" opacity=".95"/><path d="M16 4c2-2 6 0 6 2s-2 3-5 4-5 2-5 4 3 4 6 2" stroke="white" stroke-width="3" stroke-linecap="round" opacity=".95"/><path d="M3 22h14" stroke="white" stroke-width="3" stroke-linecap="round" opacity=".95"/></svg></div>
+        <div>
+          <strong>Oriental Skab Logistics</strong>
+          <small style="display:block;color:var(--muted)">OSL — سكاب الشرق للخدمات اللوجستية</small>
+        </div>
+      </div>
+      <div style="text-align:end;color:var(--muted)">© <span id="year"></span> OSL • <span data-i18n="footer.addr">1234 طريق اللوجستيات، الرياض • هاتف: +966 11 234 5678 • بريد: info@osl.com</span></div>
     </div>
   </footer>
 
   <script>
-    // Simple i18n dictionary (EN/AR)
+    // IntersectionObserver reveal
+    const io = new IntersectionObserver((ents)=>{
+      ents.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target);} });
+    },{threshold:.15});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // i18n
     const dict = {
-      en: {
+      en:{
         'nav.home':'Home','nav.about':'About','nav.products':'Products','nav.services':'Services','nav.news':'News','nav.contact':'Contact',
-        'hero.badge':'Trusted logistics partner',
-        'hero.title':'Moving goods. Powering growth.',
-        'hero.subtitle':'From first mile to last mile, OSL delivers end‑to‑end logistics across KSA and the region with reliability, visibility, and care.',
-        'cta.quote':'Request a Quote','cta.explore':'Explore Services',
-        'hero.s1':'Operations','hero.s2':'Clients Served','hero.s3':'On‑time Rate','hero.assurance':'Insured & compliant',
-        'hero.li1':'Domestic & cross‑border freight','hero.li2':'Customs clearance support','hero.li3':'Real‑time shipment tracking',
-        'about.h':'About Us','about.tag':'Riyadh • KSA','about.mission.h':'Our Mission','about.mission.p':'Enable Saudi businesses to move faster with dependable logistics, transparent pricing, and proactive service.',
-        'about.vision.h':'Our Vision','about.vision.p':'Become a leading KSA logistics partner known for innovation, integrity, and customer obsession.',
-        'about.values.h':'Values','about.values.p':'Safety, reliability, accountability, and long‑term partnerships.',
-        'products.h':'Products','products.tag':'For carriers & shippers','products.p1.h':'Trailer Axles & Parts','products.p1.p':'14T axles, air‑suspension kits, brake valves, leaf springs, and OEM spares.',
-        'products.p2.h':'Cargo Handling','products.p2.p':'Ratcheting straps, corner protectors, pallets, and safety gear.',
-        'products.p3.h':'Telematics','products.p3.p':'Trackers, temperature sensors, and fleet dashboards for visibility.',
-        'services.h':'Services','services.tag':'End‑to‑end solutions','services.s1.h':'Road Freight (FTL/LTL)','services.s1.p':'Nationwide coverage with dependable delivery windows and live updates.',
-        'services.s2.h':'Customs & Compliance','services.s2.p':'HS codes, SABER/SFDA guidance, and port handling across KSA.',
-        'services.s3.h':'Warehousing','services.s3.p':'Short‑ and long‑term storage, cross‑docking, and inventory control.',
-        'news.h':'News','news.tag':'Updates & announcements','news.n1.tag':'Announcement','news.n1.p':'We expanded capacity to serve central region clients faster.',
-        'news.n2.tag':'Partnership','news.n2.p':'Broader lane coverage and improved transit times.',
-        'news.n3.tag':'Update','news.n3.p':'We now offer advisory for regulated imports and certificates.',
-        'contact.h':'Contact Us','contact.form.h':'Send a message','contact.form.name':'Full name','contact.form.phone':'Phone','contact.form.email':'Email','contact.form.msg':'Message','contact.form.send':'Send',
-        'contact.addr.h':'Address','contact.addr':'1234 Logistics Rd, Riyadh, Saudi Arabia','contact.phone.h':'Phone','contact.email.h':'Email',
-        'footer.ar':'سكاب الشرق للخدمات اللوجستية','footer.addr':'1234 Logistics Rd, Riyadh, Saudi Arabia • P: +966 11 234 5678 • E: info@osl.com','footer.rights':'All rights reserved.'
+        'hero.badge':'Trusted logistics partner','hero.title':'Moving goods. Powering growth.','hero.subtitle':'From first mile to last mile, OSL delivers end‑to‑end logistics across KSA and the region with reliability, visibility, and care.','cta.quote':'Request a Quote','cta.explore':'Explore Services',
+        'why.h':'Why choose us','why.s1.h':'Get a Quote','why.s1.p':'Upfront pricing based on shipment details.','why.s2.h':'Plan & Schedule','why.s2.p':'We set dates and handle paperwork.','why.s3.h':'Move & Track','why.s3.p':'Reliable lanes with live tracking.','why.s4.h':'Deliver & Store','why.s4.p':'Precise delivery or secure storage.',
+        'stats.s1':'Operations','stats.s2':'Clients Served','stats.s3':'On‑time Rate','stats.s4':'Nationwide',
+        'services.h':'Services','services.lead':'Door‑to‑door solutions with customs & compliance support.','services.s1':'Road Freight (FTL/LTL)','services.s2':'Customs & Compliance (HS/SABER/SFDA)','services.s3':'Warehousing & Cross‑docking',
+        'about.h':'About Us','about.p':'OSL provides integrated logistics: road freight, customs clearance, storage, and real‑time tracking — with proactive service and transparent pricing.','about.note':'Safety • Transparency • Reliability',
+        'products.h':'Products','p1.h':'Trailer Axles & Parts','p1.p':'14T axles, air‑suspension kits, brake valves, leaf springs, and OEM spares.','p2.h':'Cargo Handling','p2.p':'Ratcheting straps, corner protectors, pallets, and safety gear.','p3.h':'Telematics','p3.p':'Trackers, temperature sensors, and fleet dashboards for visibility.',
+        'news.h':'News','news.tag':'Updates & announcements','n1.p':'We expanded capacity to serve central region clients faster.','n2.p':'Broader lane coverage and improved transit times.','n3.p':'Advisory for regulated imports and certificates.',
+        'contact.h':'Contact Us','contact.form.h':'Send a message','form.name':'Full name','form.phone':'Phone','form.email':'Email','form.msg':'Message','form.send':'Send','addr.h':'Address','addr':'1234 Logistics Rd, Riyadh, Saudi Arabia','phone.h':'Phone','email.h':'Email',
+        'footer.addr':'1234 Logistics Rd, Riyadh • P: +966 11 234 5678 • E: info@osl.com'
       },
-      ar: {
-        'nav.home':'الرئيسية','nav.about':'من نحن','nav.products':'المنتجات','nav.services':'الخدمات','nav.news':'الأخبار','nav.contact':'تواصل معنا',
-        'hero.badge':'شريكك اللوجستي الموثوق',
-        'hero.title':'نحرك البضائع… وننمي الأعمال',
-        'hero.subtitle':'من الميل الأول حتى الأخير، تقدّم سكاب الشرق حلول لوجستية متكاملة داخل المملكة والمنطقة بثقة ووضوح وعناية.',
-        'cta.quote':'اطلب عرض سعر','cta.explore':'استعرض الخدمات',
-        'hero.s1':'تشغيل على مدار الساعة','hero.s2':'+120 عميل','hero.s3':'نسبة التزام 98%','hero.assurance':'مؤمّن ومتوافق',
-        'hero.li1':'نقل بري داخلي وعابر للحدود','hero.li2':'خدمات التخليص الجمركي','hero.li3':'تتبّع الشحنات لحظيًا',
-        'about.h':'من نحن','about.tag':'الرياض • السعودية','about.mission.h':'رسالتنا','about.mission.p':'تمكين الأعمال السعودية من التحرك أسرع عبر لوجستيات موثوقة وتسعير شفاف وخدمة استباقية.',
-        'about.vision.h':'رؤيتنا','about.vision.p':'أن نكون شريكًا لوجستيًا رائدًا في المملكة يُعرف بالابتكار والنزاهة وهوس خدمة العميل.',
-        'about.values.h':'قيمنا','about.values.p':'السلامة، الاعتمادية، المساءلة، والشراكات طويلة الأمد.',
-        'products.h':'المنتجات','products.tag':'لملاك الأسطول والشاحنين','products.p1.h':'محاور مقطورات وقطع غيار','products.p1.p':'محاور 14 طن، أطقم تعليق هوائي، صمامات فرامل، يايات، وقطع أصلية.',
-        'products.p2.h':'معدات مناولة','products.p2.p':'أحزمة ربط، حمايات زوايا، منصات، ومعدات سلامة.',
-        'products.p3.h':'تليماتكس','products.p3.p':'أجهزة تتبع وحساسات حرارة ولوحات أسطول للشفافية.',
-        'services.h':'الخدمات','services.tag':'حلول متكاملة','services.s1.h':'نقل بري (حمولة كاملة/جزئية)','services.s1.p':'تغطية وطنية بمواعيد تسليم مضمونة وتحديثات مباشرة.',
-        'services.s2.h':'الجمارك والامتثال','services.s2.p':'رموز جمركية، SABER/SFDA، وخدمات الموانئ عبر المملكة.',
-        'services.s3.h':'التخزين','services.s3.p':'تخزين قصير وطويل الأجل، تفريغ وتحميل، وضبط المخزون.',
-        'news.h':'الأخبار','news.tag':'تحديثات وإعلانات','news.n1.tag':'إعلان','news.n1.p':'وسّعنا قدراتنا لخدمة عملاء المنطقة الوسطى أسرع.',
-        'news.n2.tag':'شراكة','news.n2.p':'تغطية مسارات أوسع وأزمنة عبور أفضل.',
-        'news.n3.tag':'تحديث','news.n3.p':'نوفر الآن إرشادًا للاستيراد المنظّم والشهادات.',
-        'contact.h':'تواصل معنا','contact.form.h':'أرسل رسالة','contact.form.name':'الاسم الكامل','contact.form.phone':'الهاتف','contact.form.email':'البريد الإلكتروني','contact.form.msg':'الرسالة','contact.form.send':'إرسال',
-        'contact.addr.h':'العنوان','contact.addr':'1234 طريق اللوجستيات، الرياض، السعودية','contact.phone.h':'الهاتف','contact.email.h':'البريد',
-        'footer.ar':'سكاب الشرق للخدمات اللوجستية','footer.addr':'1234 طريق اللوجستيات، الرياض، السعودية • هاتف: +966 11 234 5678 • بريد: info@osl.com','footer.rights':'جميع الحقوق محفوظة.'
+      ar:{
+        'nav.home':'الرئيسية','nav.about':'من نحن','nav.products':'المنتجات','nav.services':'الخدمات','nav.news':'الأخبار','nav.contact':'تواصل',
+        'hero.badge':'شريكك اللوجستي الموثوق','hero.title':'نحرك البضائع… وننمي الأعمال','hero.subtitle':'من الميل الأول حتى الأخير، تقدّم OSL حلول لوجستية متكاملة داخل المملكة والمنطقة بثقة ووضوح وعناية.','cta.quote':'اطلب عرض سعر','cta.explore':'استعرض الخدمات',
+        'why.h':'ليش تختارنا','why.s1.h':'اطلب عرض','why.s1.p':'تسعير واضح حسب تفاصيل الشحن.','why.s2.h':'خطة وجدولة','why.s2.p':'نحدّد المواعيد ونتكفّل بالمستندات.','why.s3.h':'نقل وتتبّع','why.s3.p':'شحن موثوق مع تتبّع لحظي ومسارات محسّنة.','why.s4.h':'تسليم وتخزين','why.s4.p':'تسليم دقيق أو تخزين آمن قصير/طويل الأجل.',
+        'stats.s1':'تشغيل','stats.s2':'عميل مخدوم','stats.s3':'التزام بالمواعيد','stats.s4':'تغطية وطنية',
+        'services.h':'الخدمات','services.lead':'حلول شاملة من الباب للباب مع دعم الجمارك والامتثال.','services.s1':'نقل بري (FTL/LTL)','services.s2':'الجمارك والامتثال (HS/SABER/SFDA)','services.s3':'التخزين والعبور السريع (Cross-docking)',
+        'about.h':'من نحن','about.p':'شركة سعودية تقدّم لوجستيات متكاملة: نقل بري، تخليص جمركي، حلول تخزين، وتتبّع لحظي—بخدمة استباقية وأسعار شفافة.','about.note':'سلامة • شفافية • اعتمادية',
+        'products.h':'المنتجات','p1.h':'محاور مقطورات وقطع غيار','p1.p':'محاور 14 طن، أطقم تعليق هوائي، صمامات فرامل، يايات، وقطع أصلية.','p2.h':'معدات مناولة','p2.p':'أحزمة ربط، حمايات زوايا، منصات، ومعدات سلامة.','p3.h':'تليماتكس','p3.p':'أجهزة تتبع وحساسات حرارة ولوحات أسطول للشفافية.',
+        'news.h':'الأخبار','news.tag':'تحديثات وإعلانات','n1.p':'وسعنا الطاقة لخدمة عملاء المنطقة الوسطى أسرع.','n2.p':'تغطية مسارات أوسع وأزمنة عبور أفضل.','n3.p':'نوفّر إرشادًا للاستيراد المنظّم والشهادات.',
+        'contact.h':'تواصل معنا','contact.form.h':'أرسل رسالة','form.name':'الاسم الكامل','form.phone':'الهاتف','form.email':'البريد الإلكتروني','form.msg':'الرسالة','form.send':'إرسال','addr.h':'العنوان','addr':'1234 طريق اللوجستيات، الرياض، السعودية','phone.h':'الهاتف','email.h':'البريد',
+        'footer.addr':'1234 طريق اللوجستيات، الرياض • هاتف: +966 11 234 5678 • بريد: info@osl.com'
       }
     };
 
-    let currentLang = 'ar';
-
+    let currentLang='ar';
     function applyLang(lang){
-      currentLang = lang;
-      const map = dict[lang];
-      document.querySelectorAll('[data-i18n]').forEach(el=>{
-        const key = el.getAttribute('data-i18n');
-        if(map[key]) el.textContent = map[key];
-      });
-      document.body.dir = (lang==='ar') ? 'rtl' : 'ltr';
+      currentLang=lang; const m=dict[lang];
+      document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n'); if(m[k]) el.textContent=m[k];});
+      document.body.dir = (lang==='ar')?'rtl':'ltr';
       document.documentElement.lang = lang;
-      // Swap button styles
-      document.getElementById('btnEN').classList.toggle('ghost', !(lang==='en'));
-      document.getElementById('btnAR').classList.toggle('ghost', !(lang==='ar'));
+      document.getElementById('toEN').classList.toggle('primary', lang==='en');
+      document.getElementById('toAR').classList.toggle('primary', lang==='ar');
     }
-
-    document.getElementById('btnEN').addEventListener('click', ()=>applyLang('en'));
-    document.getElementById('btnAR').addEventListener('click', ()=>applyLang('ar'));
-
-    // Init
+    document.getElementById('toEN').onclick=()=>applyLang('en');
+    document.getElementById('toAR').onclick=()=>applyLang('ar');
     document.getElementById('year').textContent = new Date().getFullYear();
     applyLang('ar');
   </script>
