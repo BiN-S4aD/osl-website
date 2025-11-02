@@ -37,12 +37,13 @@
     :root { --nav-gap: 32px; }
     [dir="rtl"] body { font-family: "Tajawal", "Lato", system-ui, -apple-system, Arial, sans-serif; }
     .menu-wrap { display:flex; align-items:center; gap: var(--nav-gap); }
-    [dir="rtl"] nav.nav-menu .menu-wrap{
+   [dir="rtl"] nav.nav-menu .menu-wrap{
   display: flex !important;
   flex-direction: row-reverse !important;
   align-items: center !important;
   gap: var(--nav-gap) !important;
 }
+
     [dir="rtl"] .w-icon-dropdown-toggle { transform: scaleX(-1); }
     [dir="rtl"] .nav-item-title, [dir="rtl"] .nav-link, [dir="rtl"] .w-nav-link { text-align:center; }
     [dir="rtl"] .w-layout-grid { direction: rtl; }
