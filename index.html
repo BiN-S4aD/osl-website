@@ -37,16 +37,26 @@
     :root { --nav-gap: 32px; }
     [dir="rtl"] body { font-family: "Tajawal", "Lato", system-ui, -apple-system, Arial, sans-serif; }
     .menu-wrap { display:flex; align-items:center; gap: var(--nav-gap); }
-    [dir="rtl"] .menu-wrap { flex-direction: row-reverse; }
+    [dir="rtl"] nav.nav-menu .menu-wrap{
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  align-items: center !important;
+  gap: var(--nav-gap) !important;
+}
     [dir="rtl"] .w-icon-dropdown-toggle { transform: scaleX(-1); }
     [dir="rtl"] .nav-item-title, [dir="rtl"] .nav-link, [dir="rtl"] .w-nav-link { text-align:center; }
     [dir="rtl"] .w-layout-grid { direction: rtl; }
     [dir="rtl"] [data-keep-ltr] { direction: ltr !important; }
     .lang-switch { display:flex; align-items:center; gap:8px; margin-inline-start:16px; }
     .lang-switch button{
-      background:transparent; border:1px solid rgb(255,255,255);
-      color:#fff; padding:6px 10px; border-radius:8px; cursor:pointer; font:inherit;
-    }
+  background: transparent !important;
+  border: 1px solid #fff !important;
+  color: #fff !important;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font: inherit;
+}
     .lang-switch button.active { border-color: currentColor; }
     .nav-link.light.w-nav-link { display:inline-flex; align-items:center; }
   </style>
