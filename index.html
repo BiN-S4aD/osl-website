@@ -47,15 +47,22 @@
     [dir="rtl"] body { font-family: "Tajawal","Lato",system-ui,-apple-system,Arial,sans-serif; }
 
     /* ===== Navbar behavior ===== */
-    .navbar-fixed {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(0,0,0,0.9) !important; /* أسود على أعلى الصفحة */
-      transition: background .25s ease, box-shadow .25s ease, transform .2s ease;
-      box-shadow: 0 0 0 rgba(0,0,0,0);
-      backdrop-filter: none;
-    }
+.navbar-fixed {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(0,0,0,0) !important; /* شفاف في البداية */
+  transition: background .25s ease, box-shadow .25s ease, transform .2s ease;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+    /* عند التمرير يصير أسود */
+.navbar-fixed.nav-solid {
+  background: rgba(14,14,14,0.95) !important;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+    
     /* عند السكروول يصير شفاف ويختفي الأسود */
     .navbar-fixed.nav-transparent {
       background: rgba(0,0,0,0) !important;
@@ -697,22 +704,21 @@
     // Fail-safe class to ensure hidden elements show up if animations lag
     document.documentElement.classList.add('wf-failsafe');
 
-    // Navbar: أسود في الأعلى، شفاف عند النزول
+    // Navbar: شفاف في الأعلى، اسود عند النزول
     (function(){
-      const nav = document.querySelector('.navbar-fixed');
-      if(!nav) return;
-      function updateNav(){
-        if(window.scrollY > 40){
-          nav.classList.add('nav-transparent');
-        } else {
-          nav.classList.remove('nav-transparent');
-        }
-      }
-      // Initialize + bind
-      updateNav();
-      window.addEventListener('scroll', updateNav, {passive:true});
-      window.addEventListener('resize', updateNav);
-    })();
+  const nav = document.querySelector('.navbar-fixed');
+  if(!nav) return;
+  function updateNav(){
+    if(window.scrollY > 40){
+      nav.classList.add('nav-solid');
+    } else {
+      nav.classList.remove('nav-solid');
+    }
+  }
+  updateNav();
+  window.addEventListener('scroll', updateNav, {passive:true});
+})();
+
 
     // Helper: تحديث كل روابط/نصوص الهاتف من متغير واحد
     (function(){
