@@ -35,31 +35,36 @@
   <!-- RTL helpers + tweaks -->
   <style>
     :root { --nav-gap: 32px; }
+
     [dir="rtl"] body { font-family: "Tajawal", "Lato", system-ui, -apple-system, Arial, sans-serif; }
+
     .menu-wrap { display:flex; align-items:center; gap: var(--nav-gap); }
-   [dir="rtl"] nav.nav-menu .menu-wrap{
-  display: flex !important;
-  flex-direction: row-reverse !important;
-  align-items: center !important;
-  gap: var(--nav-gap) !important;
-}
+    /* روابط النافبار فقط داخل هذا الغلاف */
+    .menu-links { display:flex; align-items:center; gap: var(--nav-gap); }
+
+    /* انعكاس ترتيب الروابط فقط في RTL */
+    [dir="rtl"] .menu-links { flex-direction: row-reverse; }
+
+    /* لا نعكس .menu-wrap بكاملها كي لا تتأثر الأزرار الأخرى */
+    /* ملاحظة: لو كان عندك قواعد قديمة تعكس .menu-wrap، احذفها. */
+
+    .lang-switch { display:flex; align-items:center; gap:8px; margin-inline-start:16px; }
+    .lang-switch button{
+      background: transparent !important;
+      border: 1px solid #fff !important;
+      color: #fff !important;
+      padding: 6px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      font: inherit;
+    }
+    .lang-switch button.active { border-color: currentColor; }
+    .nav-link.light.w-nav-link { display:inline-flex; align-items:center; }
 
     [dir="rtl"] .w-icon-dropdown-toggle { transform: scaleX(-1); }
     [dir="rtl"] .nav-item-title, [dir="rtl"] .nav-link, [dir="rtl"] .w-nav-link { text-align:center; }
     [dir="rtl"] .w-layout-grid { direction: rtl; }
-    [dir="rtl"] [data-keep-ltr] { direction: ltr !important; }
-    .lang-switch { display:flex; align-items:center; gap:8px; margin-inline-start:16px; }
-    .lang-switch button{
-  background: transparent !important;
-  border: 1px solid #fff !important;
-  color: #fff !important;
-  padding: 6px 10px;
-  border-radius: 8px;
-  cursor: pointer;
-  font: inherit;
-}
-    .lang-switch button.active { border-color: currentColor; }
-    .nav-link.light.w-nav-link { display:inline-flex; align-items:center; }
+    [data-keep-ltr] { direction: ltr !important; }
   </style>
 </head>
 <body>
@@ -73,99 +78,103 @@
             <a href="/home" class="brand-tablet w-nav-brand"><img loading="lazy" height="30" alt="logo" src="https://raw.githubusercontent.com/BiN-S4aD/osl-website/6e7eaede1d0057da0f010410871199b20efda7d0/h-osl-logo.svg" class="logo"></a>
             <div class="close-menu-button w-nav-button" style="-webkit-user-select: text;" aria-label="menu" role="button" tabindex="0" aria-controls="w-nav-overlay-0" aria-haspopup="menu" aria-expanded="false"><img loading="lazy" src="https://cdn.prod.website-files.com/68999d63cefca18d8d70665e/68999d63cefca18d8d7067d3_close-btn.svg" alt="icon" class="nav-close-icon"></div>
           </div>
+
           <div class="menu-wrap">
-            <!-- Home واحد فقط -->
-            <a href="/home" class="nav-link light w-nav-link w--current" data-i18n="nav.home" style="max-width: 1400px;">Home</a>
+            <!-- ✅ روابط القائمة فقط داخل menu-links لعكس الترتيب حسب اللغة -->
+            <div class="menu-links">
+              <!-- Home واحد فقط -->
+              <a href="/home" class="nav-link light w-nav-link w--current" data-i18n="nav.home" style="max-width: 1400px;">Home</a>
 
-            <!-- About -->
-            <div data-delay="0" data-hover="true" data-w-id="25ab8992-3617-da1a-8543-70f3b45f8964" class="nav-dropdown w-dropdown" style="max-width: 1400px;">
-              <div class="nav-dropdown-toggle light w-dropdown-toggle" id="w-dropdown-toggle-1" aria-controls="w-dropdown-list-1" aria-haspopup="menu" aria-expanded="false" role="button" tabindex="0">
-                <div class="nav-dropdown-icon w-icon-dropdown-toggle" aria-hidden="true"></div>
-                <div class="nav-item-title" data-i18n="nav.about">About us</div>
-              </div>
-              <nav class="nav-dropdown-list w-dropdown-list" id="w-dropdown-list-1" aria-labelledby="w-dropdown-toggle-1">
-                <div class="nav-dropdown-link-wrapper">
-                  <a href="/about-us" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="nav.about_us">About Us</a><a href="/our-team" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="nav.team">Our Team</a><a href="/faq" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="nav.faq">FAQ</a><a href="/reviews" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="nav.testimonials">Testimonials</a><a href="/career" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="nav.career">Career</a>
+              <!-- About -->
+              <div data-delay="0" data-hover="true" data-w-id="25ab8992-3617-da1a-8543-70f3b45f8964" class="nav-dropdown w-dropdown" style="max-width: 1400px;">
+                <div class="nav-dropdown-toggle light w-dropdown-toggle" id="w-dropdown-toggle-1" aria-controls="w-dropdown-list-1" aria-haspopup="menu" aria-expanded="false" role="button" tabindex="0">
+                  <div class="nav-dropdown-icon w-icon-dropdown-toggle" aria-hidden="true"></div>
+                  <div class="nav-item-title" data-i18n="nav.about">About us</div>
                 </div>
-              </nav>
-            </div>
-
-            <!-- Services -->
-            <div data-delay="0" data-hover="true" data-w-id="25ab8992-3617-da1a-8543-70f3b45f8975" class="nav-dropdown w-dropdown" style="max-width: 1400px;">
-              <div class="nav-dropdown-toggle light w-dropdown-toggle" id="w-dropdown-toggle-2" aria-controls="w-dropdown-list-2" aria-haspopup="menu" aria-expanded="false" role="button" tabindex="0">
-                <div class="nav-dropdown-icon w-icon-dropdown-toggle" aria-hidden="true"></div>
-                <div class="nav-item-title" data-i18n="nav.services">Services</div>
-              </div>
-              <nav class="nav-dropdown-list w-dropdown-list" id="w-dropdown-list-2" aria-labelledby="w-dropdown-toggle-2">
-                <div class="nav-dropdown-link-wrapper">
-                  <div class="nav-collection w-dyn-list">
-                    <div role="list" class="w-dyn-items">
-                      <div role="listitem" class="w-dyn-item">
-                        <a href="/services/residential-moving" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="svc.residential">Residential Moving</a>
-                      </div>
-                      <div role="listitem" class="w-dyn-item">
-                        <a href="/services/commercial-moving" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="svc.commercial">Commercial Moving</a>
-                      </div>
-                      <div role="listitem" class="w-dyn-item">
-                        <a href="/services/packing-unpacking" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="svc.pack">Packing &amp; Unpacking</a>
-                      </div>
-                      <div role="listitem" class="w-dyn-item">
-                        <a href="/services/local-long-distance-moves" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="svc.local">Local &amp; Long-Distance Moves</a>
-                      </div>
-                      <div role="listitem" class="w-dyn-item">
-                        <a href="/services/storage-solutions" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="svc.storage">Storage Solutions</a>
-                      </div>
-                      <div role="listitem" class="w-dyn-item">
-                        <a href="/services/specialty-item-moving" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="svc.special">Specialty Item Moving</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </nav>
-            </div>
-
-            <a href="/blog" class="nav-link light w-nav-link" style="max-width: 1400px;" data-i18n="nav.blog">Blog</a>
-
-            <!-- All Pages -->
-            <div data-delay="0" data-hover="true" data-w-id="25ab8992-3617-da1a-8543-70f3b45f8985" class="nav-dropdown w-dropdown" style="max-width: 1400px;">
-              <div class="nav-dropdown-toggle light w-dropdown-toggle" id="w-dropdown-toggle-3" aria-controls="w-dropdown-list-3" aria-haspopup="menu" aria-expanded="false" role="button" tabindex="0">
-                <div class="nav-dropdown-icon w-icon-dropdown-toggle" aria-hidden="true"></div>
-                <div class="nav-item-title" data-i18n="nav.all_pages">All Pages</div>
-              </div>
-              <nav class="nav-dropdown-list megamenu w-dropdown-list" id="w-dropdown-list-3" aria-labelledby="w-dropdown-toggle-3">
-                <div class="nav-dropdown-column">
+                <nav class="nav-dropdown-list w-dropdown-list" id="w-dropdown-list-1" aria-labelledby="w-dropdown-toggle-1">
                   <div class="nav-dropdown-link-wrapper">
-                    <a href="/home" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="nav.home2">Home 2</a><a href="/home-1" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="nav.home1">Home 1</a><a href="/home-3" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="nav.home3">Home 3</a><a href="/about-us" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="nav.about_us">About Us</a><a href="/services" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="nav.services">Services</a>
-                    <div class="nav-collection w-dyn-list">
-                      <div role="list" class="w-dyn-items">
-                        <div role="listitem" class="w-dyn-item">
-                          <a href="/services/residential-moving" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="nav.services_details">Services Details</a>
-                        </div>
-                      </div>
-                    </div><a href="/our-team" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="nav.team">Our Team</a><a href="/pricing" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="nav.pricing">Pricing</a>
+                    <a href="/about-us" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="nav.about_us">About Us</a><a href="/our-team" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="nav.team">Our Team</a><a href="/faq" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="nav.faq">FAQ</a><a href="/reviews" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="nav.testimonials">Testimonials</a><a href="/career" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="nav.career">Career</a>
                   </div>
+                </nav>
+              </div>
+
+              <!-- Services -->
+              <div data-delay="0" data-hover="true" data-w-id="25ab8992-3617-da1a-8543-70f3b45f8975" class="nav-dropdown w-dropdown" style="max-width: 1400px;">
+                <div class="nav-dropdown-toggle light w-dropdown-toggle" id="w-dropdown-toggle-2" aria-controls="w-dropdown-list-2" aria-haspopup="menu" aria-expanded="false" role="button" tabindex="0">
+                  <div class="nav-dropdown-icon w-icon-dropdown-toggle" aria-hidden="true"></div>
+                  <div class="nav-item-title" data-i18n="nav.services">Services</div>
                 </div>
-                <div class="nav-dropdown-column">
+                <nav class="nav-dropdown-list w-dropdown-list" id="w-dropdown-list-2" aria-labelledby="w-dropdown-toggle-2">
                   <div class="nav-dropdown-link-wrapper">
-                    <a href="/reviews" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="nav.testimonials">Reviews</a><a href="/faq" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="nav.faq">FAQ</a><a href="/career" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="nav.career">Career</a>
                     <div class="nav-collection w-dyn-list">
                       <div role="list" class="w-dyn-items">
                         <div role="listitem" class="w-dyn-item">
-                          <a href="/job-positions/operations-manager" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="nav.career_details">Career Details</a>
+                          <a href="/services/residential-moving" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="svc.residential">Residential Moving</a>
                         </div>
-                      </div>
-                    </div><a href="/contact-us" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="nav.contact">Contact Us</a><a href="/blog" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="nav.blog">Blog</a>
-                    <div class="nav-collection w-dyn-list">
-                      <div role="list" class="w-dyn-items">
                         <div role="listitem" class="w-dyn-item">
-                          <a href="/blog-posts/the-ultimate-guide-to-planning-a-successful-move" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="nav.blog_details">Blog Details</a>
+                          <a href="/services/commercial-moving" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="svc.commercial">Commercial Moving</a>
+                        </div>
+                        <div role="listitem" class="w-dyn-item">
+                          <a href="/services/packing-unpacking" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="svc.pack">Packing &amp; Unpacking</a>
+                        </div>
+                        <div role="listitem" class="w-dyn-item">
+                          <a href="/services/local-long-distance-moves" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="svc.local">Local &amp; Long-Distance Moves</a>
+                        </div>
+                        <div role="listitem" class="w-dyn-item">
+                          <a href="/services/storage-solutions" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="svc.storage">Storage Solutions</a>
+                        </div>
+                        <div role="listitem" class="w-dyn-item">
+                          <a href="/services/specialty-item-moving" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="svc.special">Specialty Item Moving</a>
                         </div>
                       </div>
                     </div>
                   </div>
+                </nav>
+              </div>
+
+              <a href="/blog" class="nav-link light w-nav-link" style="max-width: 1400px;" data-i18n="nav.blog">Blog</a>
+
+              <!-- All Pages -->
+              <div data-delay="0" data-hover="true" data-w-id="25ab8992-3617-da1a-8543-70f3b45f8985" class="nav-dropdown w-dropdown" style="max-width: 1400px;">
+                <div class="nav-dropdown-toggle light w-dropdown-toggle" id="w-dropdown-toggle-3" aria-controls="w-dropdown-list-3" aria-haspopup="menu" aria-expanded="false" role="button" tabindex="0">
+                  <div class="nav-dropdown-icon w-icon-dropdown-toggle" aria-hidden="true"></div>
+                  <div class="nav-item-title" data-i18n="nav.all_pages">All Pages</div>
                 </div>
-              </nav>
-            </div>
+                <nav class="nav-dropdown-list megamenu w-dropdown-list" id="w-dropdown-list-3" aria-labelledby="w-dropdown-toggle-3">
+                  <div class="nav-dropdown-column">
+                    <div class="nav-dropdown-link-wrapper">
+                      <a href="/home" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="nav.home2">Home 2</a><a href="/home-1" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="nav.home1">Home 1</a><a href="/home-3" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="nav.home3">Home 3</a><a href="/about-us" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="nav.about_us">About Us</a><a href="/services" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="nav.services">Services</a>
+                      <div class="nav-collection w-dyn-list">
+                        <div role="list" class="w-dyn-items">
+                          <div role="listitem" class="w-dyn-item">
+                            <a href="/services/residential-moving" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="nav.services_details">Services Details</a>
+                          </div>
+                        </div>
+                      </div><a href="/our-team" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="nav.team">Our Team</a><a href="/pricing" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="nav.pricing">Pricing</a>
+                    </div>
+                  </div>
+                  <div class="nav-dropdown-column">
+                    <div class="nav-dropdown-link-wrapper">
+                      <a href="/reviews" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="nav.testimonials">Reviews</a><a href="/faq" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="nav.faq">FAQ</a><a href="/career" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="nav.career">Career</a>
+                      <div class="nav-collection w-dyn-list">
+                        <div role="list" class="w-dyn-items">
+                          <div role="listitem" class="w-dyn-item">
+                            <a href="/job-positions/operations-manager" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="nav.career_details">Career Details</a>
+                          </div>
+                        </div>
+                      </div><a href="/contact-us" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="nav.contact">Contact Us</a><a href="/blog" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="nav.blog">Blog</a>
+                      <div class="nav-collection w-dyn-list">
+                        <div role="list" class="w-dyn-items">
+                          <div role="listitem" class="w-dyn-item">
+                            <a href="/blog-posts/the-ultimate-guide-to-planning-a-successful-move" class="nav-dropdown-link w-dropdown-link" tabindex="0" data-i18n="nav.blog_details">Blog Details</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </nav>
+              </div>
+            </div><!-- /.menu-links -->
 
             <!-- call button -->
             <div class="nav-tablet-button" data-keep-ltr>
@@ -592,8 +601,6 @@
     </div>
   </div>
 
-
-
   <!-- Fail-safe: أظهر أي عناصر بقيت مخفية بسبب الأنيميشن -->
   <script>
     window.addEventListener('load', function () {
@@ -687,21 +694,20 @@
     }
 
     (function(){
-      const originalFlex = new WeakMap();
+      // نعكس ترتيب الروابط فقط (داخل .menu-links)
       function setRTLFixes(isRTL){
-        const menuWrap = document.querySelector('.menu-wrap');
-        if(menuWrap){
-          if(!originalFlex.has(menuWrap)) originalFlex.set(menuWrap, {dir: menuWrap.style.flexDirection || ''});
-          menuWrap.style.display = 'flex';
-          menuWrap.style.alignItems = 'center';
-          menuWrap.style.gap = '32px';
-          menuWrap.style.flexDirection = isRTL ? 'row-reverse' : 'row';
+        const links = document.querySelector('.menu-links');
+        if (links){
+          links.style.display = 'flex';
+          links.style.alignItems = 'center';
+          links.style.gap = '32px';
+          links.style.flexDirection = isRTL ? 'row-reverse' : 'row';
         }
       }
       window.setLang = function(lang){
-  setLangBase(lang);
-  setRTLFixes(lang === 'ar'); 
-};
+        setLangBase(lang);
+        setRTLFixes(lang === 'ar');
+      };
       window.addEventListener('DOMContentLoaded', function(){
         setLang('en');
         document.getElementById('btn-en')?.addEventListener('click', ()=>setLang('en'));
